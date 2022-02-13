@@ -1,0 +1,31 @@
+name: "Terraform Github GCP Infrastructure-as-code"
+
+on:
+  workflow_dispatch:
+
+  push:
+    branches:
+    - main
+
+jobs:
+  terraform-apply:
+    name: "Terraform apply job"
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v1
+
+    - name: Bring GCP service account key from github secrets
+      run: 'echo "$GCP_KEY" > credentials.json'
+      env:
+        GCP_KEY: ${{secrets.GCP_KEY}}
+
+    - name: Terraform init
+      run: terraform init -reconfigure -backend-config=gcs_bucket_backend_config
+
+    - name: Terraform apply
+      run: terraform apply -input=false -auto-approve
