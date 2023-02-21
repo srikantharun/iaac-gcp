@@ -28,8 +28,8 @@ jobs:
     - name: Terraform init
       run: terraform init -reconfigure -backend-config=gcs_bucket_backend_config
 
-   # - name: Terraform apply
-   #   run: terraform apply -input=false -auto-approve
+    - name: Terraform apply
+      run: terraform apply -input=false -auto-approve
 
   terraform-destroy:
     name: "Terrform destroy job"
