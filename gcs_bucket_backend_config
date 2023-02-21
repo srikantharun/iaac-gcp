@@ -1,2 +1,2 @@
-bucket = "gcs_terraform_backend"
+bucket = "gcs_terraform_backend_1"
 credentials = "credentials.json"

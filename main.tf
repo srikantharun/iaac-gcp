@@ -1,7 +1,7 @@
 provider "google" {
   credentials = "credentials.json"
-  project     = "just-nova-340506"
-  region      = "us-central1"
+  project     = "mock-terratest-gcp-feb17"
+  region      = "europe-west2"
 }
 
 terraform {

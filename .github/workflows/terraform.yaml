@@ -24,6 +24,7 @@ jobs:
       env:
         GCP_KEY: ${{secrets.GCP_KEY}}
 
+
     - name: Terraform init
       run: terraform init -reconfigure -backend-config=gcs_bucket_backend_config
 
